@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;1,9..40,800&family=Inter:wght@200;600&family=Roboto:wght@500&display=swap');
+
+.quotebox-area {
+    border: 1px solid black;
+    width: 30%;
+    padding: 4%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.quote-box{
+    background: rgba(25, 42, 50, 1);
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; 
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.upper-heading{
+    width: 100%;
+    height: 20%;
+    display: grid;
+    place-items: center;
+    color: rgba(49, 196, 190, 1);
+}
+
+.quote-line{
+    color: rgba(242, 178, 55, 1);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 60%;
+    padding: 5px;
+    text-wrap:balance;
+}
+
+.get-quote{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.get-quote button{
+    height: 60%;
+    width: 12%;
+    border: none;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(49, 196, 190, 1);
+}

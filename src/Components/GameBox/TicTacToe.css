@@ -1,0 +1,132 @@
+.board {
+  position: relative;
+  /* border: 1px solid white; */
+  height: 75%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-template-rows: 30% 30% 30%;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 5%;
+}
+
+.heading-box, .result-box{
+  position: relative;
+  /* border: 1px solid white; */
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.heading{
+  position: relative;
+  /* border: 1px solid white; */
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading #logo-heading{
+  position: relative;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.heading #player-turn{
+  position: relative;
+  cursor: none;
+  width: 100%;
+  height: 100%;
+  color:rgba(172, 194, 205, 1);
+  font-size: large;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.heading #refresh-btn{
+  position: relative;
+  cursor: pointer;
+  color: rgba(63, 85, 96, 1);
+  background: rgba(168, 190, 201, 1);
+  border-radius: 0.3rem;
+  height: 70%;
+  width: 30%;
+  padding: 5%;
+  margin-left: 50%;
+}
+
+.cell {
+  position: relative;
+  width: 100%;
+  height: 90%;
+  background: rgba(31, 53, 64, 1);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 0.5rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cell:hover {
+  background-color: #2dc66325;
+}
+
+.X {
+  color: #2196F3;
+}
+
+.O {
+  color: #FFC107;
+}
+
+.status {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+
+.result{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 30%;
+  height: 100%;
+  background: #2196F3;
+  border-radius: 0.5rem;
+  color: rgba(30, 30, 30, 1);
+  font-weight: bold;
+  font-size: small;
+}
+
+#human-result{
+  background: rgba(49, 196, 190, 1);
+}
+
+#tie-result{
+  background: rgba(168, 190, 201, 1);
+}
+
+#comp-result{
+  background: rgba(242, 178, 55, 1);
+}
+
+
+/* button {
+  margin-top: 10px;
+  font-size: 1em;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+} */
