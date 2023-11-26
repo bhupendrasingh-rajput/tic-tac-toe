@@ -14,7 +14,7 @@ export const WinnerPage = () => {
     const navigation = useNavigate();
 
     const handleQuit = () => {
-        navigation('/');
+        navigation('/tic-tac-toe');
     }
 
     const handleNextRound = () => {

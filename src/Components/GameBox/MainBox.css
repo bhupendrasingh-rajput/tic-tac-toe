@@ -11,7 +11,7 @@
     color: white;
 }
 
-.main-box {
+.main-box{
     position: relative;
     background: rgba(25, 42, 50, 1);
     width: 100%;
@@ -158,6 +158,7 @@
 #winner-box-id{
     position: relative;
     /* background: rgba(0, 0, 0, 0.73); */
+    background-color: transparent;
     padding: 0;
     display: flex;
     justify-content: center;

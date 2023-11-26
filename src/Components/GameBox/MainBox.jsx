@@ -25,7 +25,7 @@ function MainBox() {
   return (
     <div className="mainbox-area">
       <Routes>
-        <Route path='/' element={<HomePage selectPlayer={selectPlayer} />} />
+        <Route exact path='/tic-tac-toe' element={<HomePage selectPlayer={selectPlayer} />} />
         <Route path='/vsCPU/*' element={<TicTacToe human={human} computer={computer} />} />
         <Route path="/result/:winner/:value" element={<WinnerPage />} />
       </Routes>

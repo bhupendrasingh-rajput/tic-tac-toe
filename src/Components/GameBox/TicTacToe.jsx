@@ -5,11 +5,14 @@ import { LuRefreshCcw } from "react-icons/lu";
 import xLogo from './images/xLogo.png';
 import oLogo from './images/oLogo.png';
 import { useNavigate, useParams } from 'react-router-dom';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const EMPTY = '';
 const initialBoard = Array(9).fill(EMPTY);
 
 const logicalMove = (board, humanValue, compValue) => {
+
   // Check if the computer can win in the next move
   for (let i = 0; i < board.length; i++) {
     if (board[i] === EMPTY) {
@@ -32,19 +35,7 @@ const logicalMove = (board, humanValue, compValue) => {
     }
   }
 
-  // // Check if the center is available
-  // if (board[4] === EMPTY) {
-  //   return 4;
-  // }
-
-  // // Check if any corner is available
-  // const corners = [0, 2, 6, 8];
-  // const availableCorners = corners.filter((corner) => board[corner] === EMPTY);
-  // if (availableCorners.length > 0) {
-  //   return availableCorners[0];
-  // }
-
-  // If no strategic move, make a random move
+  // simple random move if there is no logical move.
   return getRandomEmptyCell(board);
 };
 
@@ -86,11 +77,6 @@ const checkWinner = (board, currentPlayer) => {
 };
 
 const TicTacToe = ({ human, computer }) => {
-
-  // localStorage.setItem('human', human);
-  // localStorage.setItem('computer', computer);
-  const {prevHumanScore, prevCompScore, prevTieScore} = useParams();
-
   const navigation = useNavigate();
   let humanValue, compValue;
 
@@ -110,7 +96,7 @@ const TicTacToe = ({ human, computer }) => {
   let [humanScore, setHumanScore] = useState(0);
   let [compScore, setCompScore] = useState(0);
   let [tieScore, setTieScore] = useState(0);
-  
+
   useEffect(() => {
     if (!humanTurn && winner === null) {
       const timeoutId = setTimeout(() => {
@@ -135,29 +121,18 @@ const TicTacToe = ({ human, computer }) => {
       if (checkWinner(newBoard, currentPlayer)) {
         setWinner(currentPlayer);
         if (currentPlayer === humanValue) {
-          setHumanScore((prevHumanScore) =>{
-            humanScore = prevHumanScore + 1;
-            localStorage.setItem('humanScore', humanScore + 1);
-          });
-          
-          console.log('humanScore: ', localStorage.getItem('humanscore'));
+          setHumanScore(humanScore + 1);
+          localStorage.setItem('humanScore', humanScore + 1);
           navigation(`/result/${human}/human`);
         } else {
-          setCompScore((prevCompScore)=>{
-            compScore = prevCompScore + 1;
-            localStorage.setItem('compScore', compScore + 1);
-          });
-          console.log('compScore: ', localStorage.getItem('compScore'));
+          setCompScore(compScore + 1);
+          localStorage.setItem('compScore', compScore + 1);
           navigation(`/result/${computer}/comp`);
         }
       } else if (!newBoard.includes(EMPTY)) {
         setWinner('Tie');
-        setTieScore((prevTieScore) => {
-          tieScore = prevTieScore + 1;
-          localStorage.setItem('tieScore', tieScore + 1);
-        });
-        
-        console.log('tieScore: ', localStorage.getItem('tieScore'));
+        setTieScore(tieScore + 1);
+        localStorage.setItem('tieScore', tieScore + 1);
       } else {
         sethumanTurn(!humanTurn);
       }
@@ -181,6 +156,7 @@ const TicTacToe = ({ human, computer }) => {
     sethumanTurn(true);
     setWinner(null);
   };
+
 
   return (
     <div className="main-box">
@@ -210,10 +186,11 @@ const TicTacToe = ({ human, computer }) => {
       </div>
 
       <div className="result-box">
-        <div className='result' id="human-result">{human} (YOU) <br /> {localStorage.getItem('humanscore') || 0}</div>
+        <div className='result' id="human-result">{human} (YOU) <br /> {localStorage.getItem('humanScore') || 0}</div>
         <div className='result' id="tie-result">TIES <br /> {localStorage.getItem('tieScore') || 0}</div>
         <div className='result' id="comp-result">{computer} (CPU) <br /> {localStorage.getItem('compScore') || 0}</div>
       </div>
+
     </div >
   );
 };
